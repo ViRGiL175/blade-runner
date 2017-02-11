@@ -5,6 +5,8 @@ package rape.brutal.bladerunner.beings;
  * Project: library-test
  * <p>
  * Character death moment receiver
+ * <p>
+ * Object can receive death signal/event
  */
 public interface IDieReceiver {
 

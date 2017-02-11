@@ -1,4 +1,4 @@
-package rape.brutal;
+package rape.brutal.bladerunner;
 
 import rape.brutal.bladerunner.beings.Being;
 import rape.brutal.bladerunner.beings.BladeRunner;
@@ -6,18 +6,16 @@ import rape.brutal.bladerunner.beings.Helper;
 import rape.brutal.bladerunner.beings.IDieReceiver;
 import rape.brutal.bladerunner.crowd.Crowd;
 
-public class Main {
-
-    public static void main(String[] args) {
-        // write your code here
-        new Game().play();
-    }
-
-}
-
-class Game implements IDieReceiver {
+/**
+ * Created by ViRGiL7 on 11.02.2017.
+ * Project: library-test
+ */
+public class DemoGame implements IDieReceiver {
 
     public void play() {
+
+        Helper.inform("Library gameplay Demo");
+
         Crowd crowd = new Crowd(10);
         BladeRunner bladeRunner = new BladeRunner("Isaac", 0.2, 0.7, this);
 
@@ -36,7 +34,7 @@ class Game implements IDieReceiver {
         bladeRunner.say("Yet...");
         bladeRunner.say("But is it a live..?");
 
-        Helper.printState(bladeRunner, "disapears in morning shadows");
+        Helper.printState(bladeRunner, "disappears in morning shadows");
     }
 
     @Override

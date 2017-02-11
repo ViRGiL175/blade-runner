@@ -5,6 +5,9 @@
       <element id="module-output" name="library-test" />
       <element id="library" level="module" name="BladeRunner" module-name="library-test" />
       <element id="dir-copy" path="$PROJECT_DIR$/javadoc" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
     </root>
   </artifact>
 </component>

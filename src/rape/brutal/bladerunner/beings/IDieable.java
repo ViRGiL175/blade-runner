@@ -5,6 +5,8 @@ package rape.brutal.bladerunner.beings;
  * Project: library-test
  * <p>
  * In case of character death
+ * <p>
+ * Object can send message about dying
  */
 public interface IDieable {
 

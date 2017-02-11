@@ -86,6 +86,7 @@ public class BladeRunner extends Being implements IDieable {
                 Helper.printState(this, "dies in fight with unknown enemy");
                 this.die();
         }
+
 //        if (being.getClass() == Human.class) {
 //            fight((Human) being);
 //        } else if (being.getClass() == Replicant.class) {
