@@ -1,0 +1,108 @@
+@startuml
+
+package rape.brutal.bladerunner {
+
+    package beings {
+
+        +abstract class Being implements IContainable {
+            #double humanity;
+            -IContainer iContainer;
+
+            +Being(double humanity);
+            +double getHumanity();
+            +void setHumanity(double humanity);
+            #void die();
+            +void say(String phrase);
+            +{abstract} String getTag();
+        }
+
+        +class BladeRunner extends Being implements IDieable {
+            -{static} final String TAG = "Blade runner";
+            -final String name;
+            -double intelligence;
+            -IDieReceiver iDieReceiver;
+
+            +BladeRunner(String name, double humanity, double intelligence, IDieReceiver iDieReceiver);
+            +Being findStrangeBeing(Crowd crowd);
+            +void makeTuringTest(Being being);
+            -void tryToExecute(Being being);
+            -void fight(BladeRunner bladeRunner);
+            -void fight(Replicant replicant);
+            -void fight(Human human);
+            -void onDie();
+            -void brutalDie();
+            +String getName();
+        }
+
+
+        +class Helper {
+            +{static} double rangeCheck(double value);
+            +{static} void printState(Being being, String state);
+            +{static} void printState(BladeRunner bladeRunner, String state);
+            +{static} void inform(String info);
+            -{static} void sleep(int millis) throws InterruptedException;
+            +{static} void shortWait();
+            +{static} void longWait();
+            +{static} void tinyWait();
+        }
+
+        +class Human extends Being {
+            +{static} final String TAG = "Human";
+
+            +Human(double humanity);
+        }
+
+        +class Replicant extends Being {
+            +{static} final String TAG = "Replicant";
+            +{static} final double REPLICATION_QUALITY = 0.01;
+
+            ~Replicant(Human human);
+        }
+
+        +class Replicator {
+            +{static} Replicant replicate(Human human);
+        }
+
+        +interface IDieReceiver {
+            +void onBladeRunnerDies();
+        }
+
+        +interface IDieable {
+            +void setDieReceiver(IDieReceiver dieReceiver);
+        }
+
+    }
+
+    package crowd {
+
+        +class Crowd implements IContainer {
+            +{static} final double REPLICANT_PROBABILITY = 0.9;
+            -final Random random;
+            -ArrayList<Being> beingArrayList;
+
+            +Crowd(int maxBeings);
+            -void registerAllBeings();
+            +Being getRandomBeing();
+            +void remove(Being being);
+            +void crowdReport();
+            -String getMeasurement();
+        }
+
+        +interface IContainer {
+            +void remove(Being being);
+        }
+
+        +interface IContainable {
+            +void removeFromCrowd();
+            +void registerIContainer(IContainer iContainer);
+        }
+
+    }
+
+    +class DemoGame implements IDieReceiver {
+         +void play();
+    }
+
+}
+
+@enduml
